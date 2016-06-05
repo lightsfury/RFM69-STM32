@@ -35,11 +35,11 @@
  */
 typedef enum
 {
-  RFM69_MODE_SLEEP = 0,//!< Sleep mode (lowest power consumption)
-  RFM69_MODE_STANDBY,  //!< Standby mode
-  RFM69_MODE_FS,       //!< Frequency synthesizer enabled
-  RFM69_MODE_TX,       //!< TX mode (carrier active)
-  RFM69_MODE_RX        //!< RX mode
+  RFM69_MODE_SLEEP    = 0,  //!< Sleep mode (lowest power consumption)
+  RFM69_MODE_STANDBY  = 1,  //!< Standby mode
+  RFM69_MODE_FS       = 2,  //!< Frequency synthesizer enabled
+  RFM69_MODE_TX       = 3,  //!< TX mode (carrier active)
+  RFM69_MODE_RX       = 4   //!< RX mode
 } RFM69Mode;
 
 /**
@@ -155,7 +155,7 @@ public:
   void dumpRegisters();
 
   void setPASettings(uint8_t forcePA = 0);
-  
+
   bool setAESEncryption(const void* aesKey, unsigned int keyLength);
 
 private:
