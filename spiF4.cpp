@@ -44,6 +44,15 @@ bool SPIF4::initClock()
   }
   else if (_spi == SPI4)
   {
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI4, ENABLE);
+  }
+  else if (_spi == SPI5)
+  {
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI5, ENABLE);
+  }
+  else if (_spi == SPI6)
+  {
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI6, ENABLE);
   }
   else
   {
@@ -123,16 +132,16 @@ uint16_t SPIF4::transfer(uint16_t data)
   while ((_spi->SR & SPI_I2S_FLAG_TXE) == RESET);
 
   // transfer
-  //_spi->DR = data;
-  SPI_SendData8(_spi, data);
+  _spi->DR = data;
+  //SPI_SendData8(_spi, data);
 
   // wait for RX buffer not empty (transfer finished)
-  //while ((_spi->SR & SPI_I2S_FLAG_RXNE) == RESET);
-  while (SPI_GetReceptionFIFOStatus(_spi) == SPI_ReceptionFIFOStatus_Empty);
+  while ((_spi->SR & SPI_I2S_FLAG_RXNE) == RESET);
+  //while (SPI_GetReceptionFIFOStatus(_spi) == SPI_ReceptionFIFOStatus_Empty);
 
   // get received data
-  //data = _spi->DR;
-  data = SPI_ReceiveData8(_spi);
+  data = _spi->DR;
+  //data = SPI_ReceiveData8(_spi);
 
   // truncate data if necessary
   if (8 == _bits)
