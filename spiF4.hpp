@@ -1,11 +1,11 @@
 /**
  * @file spiF4.hpp
  * @brief STM32L1 SPI class.
- * @date May 2016
+ * @date June 2016
  * @author Robert Beam
  *
- * Class for communicating with other SPI devices using the STM32F3 controller.
- * Tested against an STM32F3 discovery board (STM32F303VC).
+ * Class for communicating with other SPI devices using the STM32F4 controller.
+ * Tested against an STM32F429 discovery board (STM32F429ZI).
  */
 
 #ifndef SPIF4_HPP_
