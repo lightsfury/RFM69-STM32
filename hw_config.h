@@ -22,6 +22,8 @@
 
 #if defined(LIBRFM69_STM32_USE_STM32F3)
   #include <stm32f30x.h>
+#elif defined(LIBRFM69_STM32_USE_STM32F4)
+  #include <stm32f4xx.h>
 #else
   #include "stm32l1xx.h"
 #endif
